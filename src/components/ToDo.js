@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ToDo.css";
 
 
@@ -33,30 +33,40 @@ import "./ToDo.css";
 //   </div>
 
 //ovde smo samo hardcord uradili
-//isprobali da vidimo kako nasa lista treba da izgelda kada povucemo podatke sa servera
-const [todos, setTodos] = useState([
-  { completed: true, id:1, todo: 'Learn React' },
-  { completed: false, id:2, todo: 'Learn Redux' },
-  { completed: true , id:3, todo: 'Learn JS'}
-]);
+//isprobali da vidimo kako nasa lista treba da izgleda kada povucemo podatke sa servera
+// const [todos, setTodos] = useState([
+//   { completed: true, id:1, todo: 'Learn React' },
+//   { completed: false, id:2, todo: 'Learn Redux' },
+//   { completed: true , id:3, todo: 'Learn JS'}
+// ]);
+const [todos, setTodos] = useState([]);
 
-
+//svaki put kada komuniciramo sa serverom imamo useEffect()
+//kao parametre dobija jednu callback fju i jedan prazan niz
+//u f-ji  fetchujemo i setujemo todo-ove
+useEffect(() => {
+  fetch('https://dummyjson.com/todos')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    setTodos(data.todos)
+  })
+}, [])
 
 
 
 return <div className="todo-wrapper">
-<h1>ToDos</h1>
-{
-  todos.map((item) => {
-    return <div key={item.id} classNametodo>
+<h1>Todos</h1>
+{todos.map((item) => {
+    return (
+    <div key={item.id} className ="todo">
       {/* stanje checked dobija od item.completed  i to checked dobijamo iz html-a*/}
-      <input type='checkbox' checked={item.completed}></input>
+      <input type='checkbox' checked={item.completed}/>
       <span>{item.todo}</span>
-      
-      
-    </div>
-  })
-}
+    
+    </div>);
+  })}
 
 </div>
+ 
 }
