@@ -5,6 +5,7 @@ import { ToDo } from './components/ToDo';
 
 export function App() {
   return (
-    <div className="App"></div>
+    
+    <ToDo/>
   );
 }
