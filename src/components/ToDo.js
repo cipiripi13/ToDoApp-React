@@ -4,7 +4,7 @@ import "./ToDo.css";
 
 // prosta f-ja tj.komponenta koju export-ujemo
 //f-ja koja vraca neku ToDo list koju cemo da fetchujemo sa servera
- export const ToDo = () => {
+ // export const ToDo = () => {
 
 //1.sto radimo jeste da setujemo stanje, te ToDo-ove cuvacemo u nekom stanju
 // nase je samo da setujemo stanje a react ce da radi za nas svaki put update tog stanja
@@ -32,6 +32,9 @@ import "./ToDo.css";
 
 //   </div>
 
+
+
+
 //ovde smo samo hardcord uradili
 //isprobali da vidimo kako nasa lista treba da izgleda kada povucemo podatke sa servera
 // const [todos, setTodos] = useState([
@@ -39,6 +42,8 @@ import "./ToDo.css";
 //   { completed: false, id:2, todo: 'Learn Redux' },
 //   { completed: true , id:3, todo: 'Learn JS'}
 // ]);
+export const ToDo = () => {
+
 const [todos, setTodos] = useState([]);
 
 //svaki put kada komuniciramo sa serverom imamo useEffect()
